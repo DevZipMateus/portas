@@ -1,16 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ArrowRight, Shield, Clock, Settings } from 'lucide-react';
-
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (sectionRef.current) {
       sectionRef.current.classList.add('animate-fade-in');
     }
   }, []);
-
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
@@ -19,21 +16,15 @@ const HeroSection = () => {
       });
     }
   };
-
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/5562996920869?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20portas%20automáticas.', '_blank');
   };
-
-  return (
-    <section id="hero" ref={sectionRef} className="relative min-h-screen flex items-center justify-center pt-20">
+  return <section id="hero" ref={sectionRef} className="relative min-h-screen flex items-center justify-center pt-20">
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-overlay"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/314382ae-3b13-4cae-bef5-a1f039fb1d15.png')`
-          }}
-        ></div>
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-overlay" style={{
+        backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/314382ae-3b13-4cae-bef5-a1f039fb1d15.png')`
+      }}></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -53,21 +44,14 @@ const HeroSection = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 animate-slide-up [animation-delay:900ms] mb-8">
-                <Button 
-                  onClick={handleWhatsAppClick}
-                  size="lg" 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md shadow-lg group cta-button"
-                >
+                <Button onClick={handleWhatsAppClick} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md shadow-lg group cta-button">
                   Solicitar Orçamento
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 
-                <Button 
-                  variant="outline"
-                  size="lg" 
-                  className="border-white/30 text-white hover:bg-white/10 rounded-md"
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                >
+                <Button variant="outline" size="lg" onClick={() => document.getElementById('services')?.scrollIntoView({
+                behavior: 'smooth'
+              })} className="border-white/30 text-white rounded-md bg-transparent">
                   Nossos Serviços
                 </Button>
               </div>
@@ -127,8 +111,6 @@ const HeroSection = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white cursor-pointer animate-bounce" onClick={scrollToNextSection}>
         <ChevronDown size={32} />
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
