@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -12,7 +11,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 const ProjectsSection = () => {
-  // Lista das últimas 27 imagens da pasta public/lovable-uploads
+  // Lista das imagens do carrossel (removidas as imagens dos projetos 13, 16, 22, 23 e 11)
   const projectImages = [
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_1.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_2.jpg',
@@ -23,19 +22,14 @@ const ProjectsSection = () => {
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_8.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_9.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_10.jpg',
-    '/lovable-uploads/Mportas automticas e climatiza_midias/midia_11.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_12.jpg',
-    '/lovable-uploads/Mportas automticas e climatiza_midias/midia_13.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_14.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_15.jpg',
-    '/lovable-uploads/Mportas automticas e climatiza_midias/midia_16.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_17.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_18.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_19.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_20.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_21.jpg',
-    '/lovable-uploads/Mportas automticas e climatiza_midias/midia_22.jpg',
-    '/lovable-uploads/Mportas automticas e climatiza_midias/midia_23.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_24.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_25.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_26.jpg',
