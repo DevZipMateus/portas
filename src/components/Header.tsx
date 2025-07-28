@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
@@ -44,9 +43,21 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
           <a href="#" className="relative z-20">
-            <h1 className="text-xl md:text-2xl font-display font-bold text-foreground">
-              <span className="text-primary">Mportas</span> Automáticas
-            </h1>
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/bec97fe8-4b86-4d49-86bf-fad30c701380.png" 
+                alt="Mportas Automáticas Logo" 
+                className="h-12 w-12 md:h-14 md:w-14 mr-3"
+              />
+              <div className="flex flex-col">
+                <h1 className="text-lg md:text-xl font-display font-bold text-foreground leading-tight">
+                  <span className="text-primary">Mportas</span> Automáticas
+                </h1>
+                <span className="text-xs md:text-sm text-foreground/70 font-medium">
+                  e Climatizadores LTDA
+                </span>
+              </div>
+            </div>
           </a>
 
           {/* Desktop Menu */}
