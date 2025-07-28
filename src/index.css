@@ -19,16 +19,19 @@
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
     
-    --primary: 142 70% 45%;
+    /* Azul del Rey como cor primária (30%) */
+    --primary: 224 100% 40%;
     --primary-foreground: 0 0% 100%;
-    --accent: 47 96% 53%;
-    --accent-foreground: 26 83% 14%;
+    
+    /* Vermelho Ferrari como cor de destaque (10%) */
+    --accent: 0 100% 50%;
+    --accent-foreground: 0 0% 100%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 142 70% 45%;
+    --ring: 224 100% 40%;
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -159,13 +162,13 @@ html {
   }
 }
 
-/* Agricultural Theme Enhancements */
+/* Portas Automáticas Theme Enhancements */
 .hero-overlay {
   background: linear-gradient(
     135deg,
-    rgba(34, 197, 94, 0.8) 0%,
-    rgba(21, 128, 61, 0.9) 50%,
-    rgba(22, 101, 52, 0.95) 100%
+    rgba(0, 56, 168, 0.8) 0%,
+    rgba(0, 56, 168, 0.9) 50%,
+    rgba(0, 56, 168, 0.95) 100%
   );
 }
 
@@ -187,7 +190,7 @@ html {
 }
 
 .product-card:hover {
-  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 56, 168, 0.15);
 }
 
 .product-card:hover .product-image {
@@ -198,26 +201,26 @@ html {
   transition: transform 0.5s ease;
 }
 
-/* Agricultural Color Gradients */
-.agro-gradient {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+/* Automatic Doors Color Gradients */
+.doors-gradient {
+  background: linear-gradient(135deg, #0038a8 0%, #1e3a8a 50%, #1e40af 100%);
 }
 
-.earth-gradient {
-  background: linear-gradient(135deg, #a3a3a3 0%, #737373 50%, #525252 100%);
+.accent-gradient {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
 }
 
 /* Enhanced Button Styles */
 .cta-button {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #0038a8, #1e40af);
   transition: all 0.3s ease;
 }
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 56, 168, 0.3);
 }
 
 .cta-button:before {
@@ -270,7 +273,7 @@ html {
 
 /* Focus indicators for better accessibility */
 .focus-visible {
-  outline: 2px solid rgb(34, 197, 94);
+  outline: 2px solid rgb(0, 56, 168);
   outline-offset: 2px;
 }
 
@@ -284,21 +287,21 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(34, 197, 94);
+  background: rgb(0, 56, 168);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(21, 128, 61);
+  background: rgb(30, 64, 175);
 }
 
 /* Enhanced Shadow Utilities */
-.shadow-agro {
-  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
+.shadow-doors {
+  box-shadow: 0 10px 30px rgba(0, 56, 168, 0.1);
 }
 
-.shadow-earth {
-  box-shadow: 0 10px 30px rgba(92, 58, 34, 0.1);
+.shadow-accent {
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
 }
 
 .shadow-nav {

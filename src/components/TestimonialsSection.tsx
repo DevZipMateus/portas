@@ -1,38 +1,10 @@
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-
-const testimonials = [
-  {
-    name: "João Henrique Silva",
-    company: "Fazenda Santa Rita",
-    image: "/placeholder.svg",
-    text: "A AgroTech transformou nossa operação de plantio. Os implementos que adquirimos aumentaram nossa produtividade em 30% e a assistência técnica é excepcional. Recomendo para todos os produtores da região."
-  },
-  {
-    name: "Maria Fernanda Costa",
-    company: "Agropecuária Três Irmãos",
-    image: "/placeholder.svg",
-    text: "Trabalho com a AgroTech há mais de 5 anos e nunca me decepcionaram. Equipamentos de primeira qualidade, preços justos e um atendimento que realmente entende as necessidades do campo."
-  },
-  {
-    name: "Roberto Almeida",
-    company: "Fazenda Boa Vista",
-    image: "/placeholder.svg",
-    text: "Os tratores e implementos que compramos da AgroTech têm sido fundamentais para o sucesso da nossa safra. A equipe técnica nos orientou na escolha certa e o suporte pós-venda é exemplar."
-  },
-  {
-    name: "Carlos Eduardo Souza",
-    company: "Sítio Esperança Verde",
-    image: "/placeholder.svg",
-    text: "Como pequeno produtor, encontrei na AgroTech um parceiro que oferece soluções adequadas ao meu orçamento. Consegui modernizar minha propriedade com equipamentos de qualidade e financiamento facilitado."
-  }
-];
+import { Badge } from '@/components/ui/badge';
+import { Star, Quote } from 'lucide-react';
 
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -55,134 +27,141 @@ const TestimonialsSection = () => {
     };
   }, []);
 
-  const handlePrev = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
-
-  const handleNext = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
-
-  const getVisibleTestimonials = () => {
-    // For mobile, only show one testimonial
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return [testimonials[currentIndex]];
+  const testimonials = [
+    {
+      name: "Carlos Silva",
+      role: "Proprietário de Empresa",
+      location: "Goiânia - GO",
+      rating: 5,
+      text: "Excelente atendimento e qualidade excepcional. A equipe da Mportas foi muito profissional na instalação da nossa porta automática. Recomendo para todos!"
+    },
+    {
+      name: "Maria Santos",
+      role: "Administradora",
+      location: "Anápolis - GO",
+      rating: 5,
+      text: "A porta automática instalada pela Mportas transformou nosso estabelecimento. Qualidade impecável e funcionamento perfeito há mais de 2 anos."
+    },
+    {
+      name: "João Oliveira",
+      role: "Engenheiro",
+      location: "Aparecida de Goiânia - GO",
+      rating: 5,
+      text: "Profissionalismo e qualidade que só a Mportas oferece. Atendimento excepcional desde o orçamento até a instalação final."
     }
-    
-    // For larger screens, show multiple testimonials
-    const items = [];
-    for (let i = 0; i < 2; i++) {
-      const index = (currentIndex + i) % testimonials.length;
-      items.push(testimonials[index]);
+  ];
+
+  const stats = [
+    {
+      number: "98%",
+      label: "Clientes Satisfeitos",
+      description: "Baseado em avaliações dos últimos 12 meses"
+    },
+    {
+      number: "1000+",
+      label: "Projetos Concluídos",
+      description: "Residenciais, comerciais e industriais"
+    },
+    {
+      number: "17+",
+      label: "Anos de Mercado",
+      description: "Experiência e tradição em Goiás"
     }
-    return items;
-  };
+  ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-gray-50 overflow-hidden">
-      <div className="container mx-auto">
+    <section id="testimonials" ref={sectionRef} className="section-padding bg-secondary/30 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+      
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 animate-on-scroll">
+          <Badge variant="outline" className="mb-4 animate-on-scroll">
             Depoimentos
-          </span>
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            O Que Nossos Clientes Dizem
+            O que nossos clientes dizem
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Atendimento especializado e equipamentos de qualidade são nossa marca registrada.
-            Veja o que nossos parceiros do agronegócio têm a dizer sobre nossos serviços.
+            A satisfação dos nossos clientes é o nosso maior orgulho. Veja o que eles falam sobre nossos serviços.
           </p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4">
-          <div className="animate-on-scroll">
-            <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 testimonial-slider transform`}>
-              {getVisibleTestimonials().map((testimonial, index) => (
-                <TestimonialCard key={index} testimonial={testimonial} />
-              ))}
-            </div>
-          </div>
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="service-card animate-on-scroll border-none shadow-card">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <Quote className="h-6 w-6 text-primary mr-2" />
+                  <div className="flex">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                
+                <p className="text-muted-foreground mb-6 italic">
+                  "{testimonial.text}"
+                </p>
+                
+                <div className="border-t pt-4">
+                  <div className="font-semibold text-foreground">{testimonial.name}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  <div className="text-sm text-primary">{testimonial.location}</div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-          <div className="flex justify-center mt-10 space-x-4">
-            <button
-              onClick={handlePrev}
-              className="p-3 rounded-full bg-white shadow-md border border-gray-200 text-foreground hover:bg-gray-50 transition-colors"
-              aria-label="Depoimento anterior"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            
-            <div className="flex space-x-2">
-              {testimonials.map((_, index) => (
+        {/* Statistics */}
+        <div className="animate-on-scroll">
+          <Card className="border-none shadow-card bg-white">
+            <CardContent className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {stats.map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-2">{stat.number}</div>
+                    <div className="font-semibold text-foreground mb-1">{stat.label}</div>
+                    <div className="text-sm text-muted-foreground">{stat.description}</div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-12 animate-on-scroll">
+          <Card className="border-none shadow-card bg-primary/5">
+            <CardContent className="p-8">
+              <h3 className="text-2xl font-bold mb-4">Quer fazer parte destes depoimentos?</h3>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                Entre em contato conosco e descubra como podemos transformar seu projeto com 
+                nossas soluções em portas automáticas.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  key={index}
-                  onClick={() => {
-                    if (isTransitioning) return;
-                    setIsTransitioning(true);
-                    setCurrentIndex(index);
-                    setTimeout(() => setIsTransitioning(false), 600);
-                  }}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    currentIndex === index ? 'bg-primary' : 'bg-gray-300'
-                  }`}
-                  aria-label={`Ir para depoimento ${index + 1}`}
-                />
-              ))}
-            </div>
-            
-            <button
-              onClick={handleNext}
-              className="p-3 rounded-full bg-white shadow-md border border-gray-200 text-foreground hover:bg-gray-50 transition-colors"
-              aria-label="Próximo depoimento"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+                  onClick={() => window.open('https://wa.me/5562996920869?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento.', '_blank')}
+                  className="px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md transition-colors"
+                >
+                  Solicitar Orçamento
+                </button>
+                <button
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-md transition-colors"
+                >
+                  Falar Conosco
+                </button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
   );
 };
-
-interface TestimonialCardProps {
-  testimonial: {
-    name: string;
-    company: string;
-    image: string;
-    text: string;
-  };
-}
-
-const TestimonialCard = ({ testimonial }: TestimonialCardProps) => (
-  <Card className="border border-border/50 shadow-md service-card h-full">
-    <CardContent className="p-8 h-full flex flex-col">
-      <div className="mb-6 text-primary">
-        <Quote size={32} />
-      </div>
-      
-      <p className="text-foreground mb-6 flex-grow">{testimonial.text}</p>
-      
-      <div className="flex items-center">
-        <div className="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gray-200">
-          <img 
-            src={testimonial.image} 
-            alt={testimonial.name} 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div>
-          <h4 className="font-bold text-foreground">{testimonial.name}</h4>
-          <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-        </div>
-      </div>
-    </CardContent>
-  </Card>
-);
 
 export default TestimonialsSection;

@@ -1,6 +1,8 @@
+
 import { useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Phone, Mail, MapPin, Clock, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react';
 
 const ContactSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -28,26 +30,26 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: <Phone className="h-5 w-5 text-primary" />,
-      title: "Telefone",
-      details: "(67) 3345-6789",
-      link: "tel:+556733456789"
+      title: "WhatsApp",
+      details: "(62) 99692-0869",
+      link: "https://wa.me/5562996920869"
     },
     {
       icon: <Mail className="h-5 w-5 text-primary" />,
       title: "E-mail",
-      details: "vendas@agrotechimplementos.com.br",
-      link: "mailto:vendas@agrotechimplementos.com.br"
+      details: "vendas@mportasautomaticas.com.br",
+      link: "mailto:vendas@mportasautomaticas.com.br"
     },
     {
       icon: <MapPin className="h-5 w-5 text-primary" />,
-      title: "Endereço",
-      details: "Rod. BR-163, Km 85, Campo Grande - MS",
-      link: "https://maps.google.com"
+      title: "Localização",
+      details: "Goiânia - GO",
+      link: null
     },
     {
       icon: <Clock className="h-5 w-5 text-primary" />,
       title: "Horário",
-      details: "Segunda a Sexta, 7h às 17h | Sábado, 8h às 12h",
+      details: "Segunda a Sexta, 8h às 18h | Sábado, 8h às 12h",
       link: null
     }
   ];
@@ -60,27 +62,27 @@ const ContactSection = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 animate-on-scroll">
+          <Badge variant="outline" className="mb-4 animate-on-scroll">
             Entre em Contato
-          </span>
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-on-scroll">
-            Estamos Prontos para Atender Você
+            Pronto para Automatizar?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
-            Entre em contato conosco para orçamentos, assistência técnica ou informações sobre nossos implementos agrícolas.
-            Nossa equipe especializada está à disposição para ajudar no crescimento da sua propriedade rural.
+            Entre em contato conosco para orçamentos, instalações ou manutenções. 
+            Nossa equipe especializada está pronta para transformar seu projeto.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <Card className="border border-border/50 shadow-card animate-on-scroll">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-10">
                 <div>
                   <h3 className="text-2xl font-bold mb-6">Informações de Contato</h3>
                   <p className="text-muted-foreground mb-8">
-                    Para solicitar orçamentos de implementos, agendar assistência técnica ou conhecer nossos produtos,
-                    utilize um dos canais de atendimento abaixo. Atendemos produtores rurais de todo o Centro-Oeste.
+                    Para solicitar orçamentos, agendar instalações ou manutenções de portas automáticas,
+                    utilize um dos canais de atendimento abaixo. Atendemos clientes em Goiás e todo o Brasil.
                   </p>
                   
                   <div className="space-y-6 mb-8">
@@ -98,9 +100,11 @@ const ContactSection = () => {
                   <div>
                     <h4 className="text-lg font-medium mb-4">Siga-nos</h4>
                     <div className="flex space-x-3">
-                      <SocialLink icon={<Facebook size={20} />} href="#" label="Facebook" />
-                      <SocialLink icon={<Instagram size={20} />} href="#" label="Instagram" />
-                      <SocialLink icon={<Linkedin size={20} />} href="#" label="LinkedIn" />
+                      <SocialLink 
+                        icon={<Instagram size={20} />} 
+                        href="https://instagram.com/mportasautomaticas_" 
+                        label="Instagram" 
+                      />
                     </div>
                   </div>
                 </div>
@@ -113,12 +117,24 @@ const ContactSection = () => {
                         <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold mb-3">Prefere atendimento via WhatsApp?</h3>
+                    <h3 className="text-xl font-bold mb-3">Atendimento via WhatsApp</h3>
                     <p className="text-muted-foreground mb-6">
-                      Clique no botão do WhatsApp no canto inferior direito da tela para falar diretamente com nossos especialistas em implementos agrícolas e receber atendimento personalizado.
+                      Fale diretamente com nossos especialistas em portas automáticas e receba 
+                      atendimento personalizado com orçamento sem compromisso.
                     </p>
-                    <div className="text-sm text-muted-foreground">
-                      Tempo médio de resposta: <span className="font-medium text-foreground">15 minutos</span>
+                    <button
+                      onClick={() => window.open('https://wa.me/5562996920869?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20portas%20automáticas.', '_blank')}
+                      className="w-full px-6 py-3 bg-[#25D366] hover:bg-[#20BD5C] text-white rounded-md flex items-center justify-center transition-colors"
+                    >
+                      <img 
+                        src="/lovable-uploads/e5c365ac-2ba0-4157-bb97-d6821651fde1.png" 
+                        alt="WhatsApp" 
+                        className="w-5 h-5 mr-2" 
+                      />
+                      Iniciar Conversa
+                    </button>
+                    <div className="text-sm text-muted-foreground mt-4">
+                      Tempo médio de resposta: <span className="font-medium text-foreground">10 minutos</span>
                     </div>
                   </div>
                 </div>
@@ -127,19 +143,28 @@ const ContactSection = () => {
           </Card>
         </div>
 
+        {/* Additional Info */}
         <div className="mt-16 animate-on-scroll">
-          <Card className="border border-border/50 shadow-card overflow-hidden">
-            <div className="h-[400px] w-full">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3739.123456789!2d-54.6164919!3d-20.4629581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e1b123456789%3A0x123456789abcdef!2sBR-163%2C%20Campo%20Grande%20-%20MS!5e0!3m2!1spt-BR!2sbr!4v1627909542948!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                title="Mapa de localização - AgroTech Implementos"
-              ></iframe>
-            </div>
+          <Card className="border-none shadow-card bg-primary/5">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-primary mb-2">17+</div>
+                  <div className="font-medium mb-1">Anos de Experiência</div>
+                  <div className="text-sm text-muted-foreground">Tradição em portas automáticas</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary mb-2">1000+</div>
+                  <div className="font-medium mb-1">Projetos Realizados</div>
+                  <div className="text-sm text-muted-foreground">Em Goiás e todo o Brasil</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary mb-2">24h</div>
+                  <div className="font-medium mb-1">Suporte Técnico</div>
+                  <div className="text-sm text-muted-foreground">Para emergências</div>
+                </div>
+              </div>
+            </CardContent>
           </Card>
         </div>
       </div>
@@ -167,7 +192,7 @@ const ContactInfoItem = ({ icon, title, details, link }: ContactInfoItemProps) =
 
   if (link) {
     return (
-      <a href={link} className="block hover:text-primary transition-colors">
+      <a href={link} target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition-colors">
         {content}
       </a>
     );
@@ -185,6 +210,8 @@ interface SocialLinkProps {
 const SocialLink = ({ icon, href, label }: SocialLinkProps) => (
   <a
     href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors"
     aria-label={label}
   >

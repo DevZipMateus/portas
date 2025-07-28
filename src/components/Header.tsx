@@ -30,7 +30,7 @@ const Header = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5567987654321?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20implementos%20agrícolas.', '_blank');
+    window.open('https://wa.me/5562996920869?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20portas%20automáticas.', '_blank');
   };
 
   return (
@@ -45,7 +45,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <a href="#" className="relative z-20">
             <h1 className="text-xl md:text-2xl font-display font-bold text-foreground">
-              <span className="text-primary">AgroTech</span> Implementos
+              <span className="text-primary">Mportas</span> Automáticas
             </h1>
           </a>
 
@@ -102,9 +102,9 @@ interface NavLinksProps {
 const NavLinks = ({ mobile, onClick }: NavLinksProps) => {
   const links = [
     { name: 'Início', href: '#hero' },
-    { name: 'Produtos', href: '#products' },
-    { name: 'Marcas', href: '#brands' },
-    { name: 'Sobre Nós', href: '#about' },
+    { name: 'Sobre', href: '#about' },
+    { name: 'Serviços', href: '#services' },
+    { name: 'Depoimentos', href: '#testimonials' },
     { name: 'Contato', href: '#contact' },
   ];
 
