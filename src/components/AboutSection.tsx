@@ -77,9 +77,12 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div className="animate-on-scroll">
             <div className="aspect-video bg-primary/10 rounded-2xl overflow-hidden mb-6">
-              <img 
-                src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" 
-                alt="Portas automáticas Mportas - Tecnologia e qualidade"
+              <video 
+                src="/lovable-uploads/midia_3.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
