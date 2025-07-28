@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
@@ -36,24 +37,24 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'py-3 bg-background/95 backdrop-blur-md shadow-nav' 
-          : 'py-4 bg-transparent'
+          ? 'py-2 sm:py-3 bg-background/95 backdrop-blur-md shadow-nav' 
+          : 'py-3 sm:py-4 bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex items-center justify-between">
           <a href="#" className="relative z-20">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/bec97fe8-4b86-4d49-86bf-fad30c701380.png" 
                 alt="Mportas Automáticas Logo" 
-                className="h-12 w-12 md:h-14 md:w-14 mr-3"
+                className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 mr-2 sm:mr-3"
               />
               <div className="flex flex-col">
-                <h1 className="text-lg md:text-xl font-display font-bold text-foreground leading-tight">
+                <h1 className="text-base sm:text-lg md:text-xl font-display font-bold text-foreground leading-tight">
                   <span className="text-primary">Mportas</span> Automáticas
                 </h1>
-                <span className="text-xs md:text-sm text-foreground/70 font-medium">
+                <span className="text-xs sm:text-sm text-foreground/70 font-medium hidden sm:block">
                   e Climatizadores LTDA
                 </span>
               </div>
@@ -69,7 +70,7 @@ const Header = () => {
           <div className="hidden md:flex items-center">
             <Button 
               onClick={handleWhatsAppClick}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm lg:text-base px-4 lg:px-6"
             >
               Solicitar Orçamento
             </Button>
@@ -79,18 +80,18 @@ const Header = () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-10 w-10 text-foreground">
-                  <Menu size={24} />
+                <Button variant="ghost" size="icon" className="h-9 w-9 sm:h-10 sm:w-10 text-foreground">
+                  <Menu size={20} className="sm:w-6 sm:h-6" />
                   <span className="sr-only">Abrir menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="top" className="pt-16 pb-8 px-6">
-                <nav className="flex flex-col items-center space-y-4 text-lg">
+              <SheetContent side="top" className="pt-14 sm:pt-16 pb-6 sm:pb-8 px-4 sm:px-6">
+                <nav className="flex flex-col items-center space-y-3 sm:space-y-4 text-base sm:text-lg">
                   <NavLinks mobile />
                   <SheetClose asChild>
                     <Button 
                       onClick={handleWhatsAppClick}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-4"
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-4 text-sm sm:text-base"
                     >
                       Solicitar Orçamento
                     </Button>
@@ -127,8 +128,8 @@ const NavLinks = ({ mobile, onClick }: NavLinksProps) => {
           href={link.href}
           className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
             ${mobile 
-              ? 'text-xl text-foreground hover:text-primary mb-2 w-full text-center py-3' 
-              : 'text-foreground/80 hover:text-primary hover:bg-secondary/50'
+              ? 'text-lg sm:text-xl text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3' 
+              : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50'
             }`}
           onClick={onClick}
         >
