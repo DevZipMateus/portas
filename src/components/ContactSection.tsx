@@ -147,7 +147,7 @@ const ContactSection = () => {
         <div className="mt-16 animate-on-scroll">
           <Card className="border-none shadow-card bg-primary/5">
             <CardContent className="p-8">
-              <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="grid md:grid-cols-2 gap-8 text-center">
                 <div>
                   <div className="text-2xl font-bold text-primary mb-2">17+</div>
                   <div className="font-medium mb-1">Anos de Experiência</div>
@@ -157,11 +157,6 @@ const ContactSection = () => {
                   <div className="text-2xl font-bold text-primary mb-2">1000+</div>
                   <div className="font-medium mb-1">Projetos Realizados</div>
                   <div className="text-sm text-muted-foreground">Em Goiás e todo o Brasil</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-primary mb-2">24h</div>
-                  <div className="font-medium mb-1">Suporte Técnico</div>
-                  <div className="text-sm text-muted-foreground">Para emergências</div>
                 </div>
               </div>
             </CardContent>
