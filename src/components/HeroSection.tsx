@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ArrowRight, Shield, Clock, Settings } from 'lucide-react';
@@ -30,10 +29,40 @@ const HeroSection = () => {
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-cover bg-no-repeat hero-overlay" 
+          className="absolute inset-0 hero-overlay" 
           style={{
             backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/533cab1e-55c1-4769-9078-74f112a4039c.png')`,
-            backgroundPosition: 'center 30%'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'scroll'
+          }}
+        ></div>
+        {/* Mobile optimized background */}
+        <div className="block sm:hidden absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/533cab1e-55c1-4769-9078-74f112a4039c.png')`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        {/* Tablet optimized background */}
+        <div className="hidden sm:block md:hidden absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/533cab1e-55c1-4769-9078-74f112a4039c.png')`,
+            backgroundSize: '100% auto',
+            backgroundPosition: 'center 20%',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        {/* Desktop optimized background */}
+        <div className="hidden md:block absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/533cab1e-55c1-4769-9078-74f112a4039c.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 30%',
+            backgroundRepeat: 'no-repeat'
           }}
         ></div>
       </div>
