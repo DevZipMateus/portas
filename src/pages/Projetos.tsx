@@ -3,6 +3,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ImageModal from '@/components/ImageModal';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 const Projetos = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -98,6 +100,10 @@ const Projetos = () => {
     setSelectedImageIndex(index);
   };
 
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/5562996920869?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20porta%20automática.', '_blank');
+  };
+
   return (
     <div className="overflow-x-hidden">
       <Header />
@@ -150,6 +156,36 @@ const Projetos = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="section-padding bg-primary/5">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <Card className="border-none shadow-card bg-white animate-on-scroll">
+            <CardContent className="p-8 sm:p-12 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+                Gostou dos nossos projetos?
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-8 text-sm sm:text-base leading-relaxed">
+                Entre em contato conosco e solicite um orçamento personalizado para seu projeto. 
+                Nossa equipe está pronta para transformar suas ideias em realidade com a qualidade 
+                e excelência que você viu em nossos trabalhos.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button
+                  onClick={handleWhatsAppClick}
+                  size="lg"
+                  className="px-8 py-3 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
+                >
+                  Solicitar Orçamento
+                </Button>
+                <p className="text-sm text-muted-foreground">
+                  Resposta em até 24 horas
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
