@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Link, useLocation } from 'react-router-dom';
 import {
   Sheet,
   SheetContent,
@@ -13,6 +14,7 @@ import {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +35,21 @@ const Header = () => {
     window.open('https://wa.me/5562996920869?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20portas%20automáticas.', '_blank');
   };
 
+  const handleNavClick = (href: string) => {
+    if (href.startsWith('#')) {
+      // Para links internos da página, navegue para home se não estiver lá
+      if (location.pathname !== '/') {
+        window.location.href = `/${href}`;
+      } else {
+        // Scroll suave para a seção
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -43,7 +60,7 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex items-center justify-between">
-          <a href="#" className="relative z-20">
+          <Link to="/" className="relative z-20">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/bec97fe8-4b86-4d49-86bf-fad30c701380.png" 
@@ -59,11 +76,11 @@ const Header = () => {
                 </span>
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center space-x-1">
-            <NavLinks />
+            <NavLinks onNavClick={handleNavClick} />
           </nav>
 
           {/* Desktop Actions */}
@@ -87,7 +104,7 @@ const Header = () => {
               </SheetTrigger>
               <SheetContent side="top" className="pt-14 sm:pt-16 pb-6 sm:pb-8 px-4 sm:px-6">
                 <nav className="flex flex-col items-center space-y-3 sm:space-y-4 text-base sm:text-lg">
-                  <NavLinks mobile />
+                  <NavLinks mobile onNavClick={handleNavClick} />
                   <SheetClose asChild>
                     <Button 
                       onClick={handleWhatsAppClick}
@@ -108,35 +125,58 @@ const Header = () => {
 
 interface NavLinksProps {
   mobile?: boolean;
-  onClick?: () => void;
+  onNavClick: (href: string) => void;
 }
 
-const NavLinks = ({ mobile, onClick }: NavLinksProps) => {
+const NavLinks = ({ mobile, onNavClick }: NavLinksProps) => {
   const links = [
-    { name: 'Início', href: '#hero' },
-    { name: 'Sobre', href: '#about' },
-    { name: 'Serviços', href: '#services' },
-    { name: 'Projetos', href: '/projetos' },
-    { name: 'Depoimentos', href: '#testimonials' },
-    { name: 'Contato', href: '#contact' },
+    { name: 'Início', href: '#hero', isInternal: true },
+    { name: 'Sobre', href: '#about', isInternal: true },
+    { name: 'Serviços', href: '#services', isInternal: true },
+    { name: 'Projetos', href: '/projetos', isInternal: false },
+    { name: 'Depoimentos', href: '#testimonials', isInternal: true },
+    { name: 'Contato', href: '#contact', isInternal: true },
   ];
+
+  const handleClick = (link: typeof links[0]) => {
+    if (link.isInternal) {
+      onNavClick(link.href);
+    }
+  };
 
   return (
     <>
-      {links.map((link) => (
-        <a
-          key={link.name}
-          href={link.href}
-          className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
-            ${mobile 
-              ? 'text-lg sm:text-xl text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3' 
-              : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50'
-            }`}
-          onClick={onClick}
-        >
-          {link.name}
-        </a>
-      ))}
+      {links.map((link) => {
+        if (link.isInternal) {
+          return (
+            <button
+              key={link.name}
+              onClick={() => handleClick(link)}
+              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md cursor-pointer
+                ${mobile 
+                  ? 'text-lg sm:text-xl text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3' 
+                  : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50'
+                }`}
+            >
+              {link.name}
+            </button>
+          );
+        } else {
+          return (
+            <Link
+              key={link.name}
+              to={link.href}
+              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
+                ${mobile 
+                  ? 'text-lg sm:text-xl text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3' 
+                  : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50'
+                }`}
+            >
+              {link.name}
+            </Link>
+          );
+        }
+      })}
     </>
   );
 };
