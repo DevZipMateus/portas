@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { Card, CardContent } from '@/components/ui/card';
 
 const Projetos = () => {
   useEffect(() => {
@@ -25,45 +24,6 @@ const Projetos = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const projects = [
-    {
-      id: 1,
-      title: "Porta Automática Residencial",
-      category: "Residencial",
-      description: "Instalação de porta automática de vidro em residência moderna"
-    },
-    {
-      id: 2,
-      title: "Sistema de Climatização Comercial",
-      category: "Comercial",
-      description: "Projeto completo de climatização para escritório corporativo"
-    },
-    {
-      id: 3,
-      title: "Porta Automática Industrial",
-      category: "Industrial",
-      description: "Porta automática de alta resistência para ambiente industrial"
-    },
-    {
-      id: 4,
-      title: "Climatização Hospitalar",
-      category: "Hospitalar",
-      description: "Sistema de climatização especializado para ambiente hospitalar"
-    },
-    {
-      id: 5,
-      title: "Porta de Vidro Automática",
-      category: "Comercial",
-      description: "Porta de vidro automática para loja comercial"
-    },
-    {
-      id: 6,
-      title: "Sistema HVAC Completo",
-      category: "Industrial",
-      description: "Sistema completo de ar condicionado industrial"
-    }
-  ];
-
   return (
     <div className="overflow-x-hidden">
       <Header />
@@ -82,36 +42,6 @@ const Projetos = () => {
               Conheça alguns dos projetos de portas automáticas e climatização que já realizamos. 
               Cada projeto é desenvolvido com excelência e dedicação para atender às necessidades específicas de nossos clientes.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Grid */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card 
-                key={project.id}
-                className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 bg-background shadow-card animate-on-scroll"
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <span className="px-3 py-1 bg-primary text-primary-foreground rounded-full text-xs font-medium">
-                      {project.category}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    {project.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
