@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ArrowRight, Shield, Clock, Settings } from 'lucide-react';
@@ -30,9 +29,10 @@ const HeroSection = () => {
       {/* Background image with overlay */}
       <div className="absolute inset-0 z-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-overlay" 
+          className="absolute inset-0 bg-cover bg-no-repeat hero-overlay" 
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/533cab1e-55c1-4769-9078-74f112a4039c.png')`
+            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/533cab1e-55c1-4769-9078-74f112a4039c.png')`,
+            backgroundPosition: 'center top'
           }}
         ></div>
       </div>
