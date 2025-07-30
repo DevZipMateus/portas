@@ -124,18 +124,18 @@ const Projetos = () => {
       {/* Gallery Section */}
       <section className="section-padding bg-background">
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="masonry-grid">
             {galleryImages.map((image, index) => (
               <div 
                 key={index}
-                className="group relative overflow-hidden rounded-lg bg-muted animate-on-scroll hover:shadow-xl transition-all duration-300 cursor-pointer aspect-square"
+                className="group relative overflow-hidden rounded-lg bg-muted animate-on-scroll hover:shadow-xl transition-all duration-300 cursor-pointer break-inside-avoid mb-4"
                 style={{ animationDelay: `${index * 50}ms` }}
                 onClick={() => handleImageClick(index)}
               >
                 <img
                   src={image}
                   alt={`Projeto ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
@@ -166,6 +166,34 @@ const Projetos = () => {
 
       <Footer />
       <WhatsAppButton />
+
+      <style jsx>{`
+        .masonry-grid {
+          columns: 1;
+          column-gap: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+          .masonry-grid {
+            columns: 2;
+            column-gap: 1.5rem;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .masonry-grid {
+            columns: 3;
+            column-gap: 1.5rem;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .masonry-grid {
+            columns: 4;
+            column-gap: 1.5rem;
+          }
+        }
+      `}</style>
     </div>
   );
 };
