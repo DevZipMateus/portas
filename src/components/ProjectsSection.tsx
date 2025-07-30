@@ -1,18 +1,9 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
 
 const ProjectsSection = () => {
-  // Lista completa das imagens do carrossel - todas as 27 imagens restauradas
+  // Lista completa das imagens - todas as 27 imagens (exceto imagem 11 removida)
   const projectImages = [
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_1.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_2.jpg',
@@ -23,7 +14,6 @@ const ProjectsSection = () => {
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_8.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_9.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_10.jpg',
-    '/lovable-uploads/Mportas automticas e climatiza_midias/midia_11.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_12.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_13.jpg',
     '/lovable-uploads/Mportas automticas e climatiza_midias/midia_14.jpg',
@@ -45,17 +35,6 @@ const ProjectsSection = () => {
 
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
-
-  const [emblaRef] = useEmblaCarousel(
-    { 
-      loop: true,
-      align: 'center',
-      containScroll: 'trimSnaps',
-      skipSnaps: false,
-      dragFree: false
-    },
-    [Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })]
-  );
 
   // Preload images for better performance
   useEffect(() => {
@@ -104,61 +83,40 @@ const ProjectsSection = () => {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <Carousel
-            ref={emblaRef}
-            opts={{
-              align: 'center',
-              loop: true,
-              containScroll: 'trimSnaps',
-              skipSnaps: false,
-              dragFree: false
-            }}
-            plugins={[
-              Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
-            ]}
-            className="w-full animate-on-scroll"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {validImages.map((image, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <Card className="group overflow-hidden border-0 shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                      <CardContent className="p-0 relative">
-                        <div className="aspect-[4/3] overflow-hidden bg-muted">
-                          {loadedImages.has(image) ? (
-                            <img
-                              src={image}
-                              alt={`Projeto ${index + 1}`}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              loading="lazy"
-                              onLoad={() => handleImageLoad(image)}
-                              onError={() => handleImageError(image)}
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-muted">
-                              <div className="animate-pulse">
-                                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
-                                  <div className="w-8 h-8 bg-primary/40 rounded-full"></div>
-                                </div>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                          <div className="p-4 text-white">
-                            <h3 className="font-semibold">Projeto {index + 1}</h3>
-                            <p className="text-sm opacity-90">Portas Automáticas e Climatização</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll">
+            {validImages.map((image, index) => (
+              <Card key={index} className="group overflow-hidden border-0 shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-0 relative">
+                  <div className="aspect-[4/3] overflow-hidden bg-muted">
+                    {loadedImages.has(image) ? (
+                      <img
+                        src={image}
+                        alt={`Projeto ${index + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                        onLoad={() => handleImageLoad(image)}
+                        onError={() => handleImageError(image)}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-muted">
+                        <div className="animate-pulse">
+                          <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
+                            <div className="w-8 h-8 bg-primary/40 rounded-full"></div>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    )}
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
-          </Carousel>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                    <div className="p-4 text-white">
+                      <h3 className="font-semibold">Projeto {index + 1}</h3>
+                      <p className="text-sm opacity-90">Portas Automáticas e Climatização</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 text-center animate-on-scroll">
