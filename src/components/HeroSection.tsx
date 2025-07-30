@@ -32,7 +32,7 @@ const HeroSection = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-overlay" 
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/314382ae-3b13-4cae-bef5-a1f039fb1d15.png')`
+            backgroundImage: `linear-gradient(rgba(0, 56, 168, 0.4), rgba(0, 56, 168, 0.3)), url('/lovable-uploads/533cab1e-55c1-4769-9078-74f112a4039c.png')`
           }}
         ></div>
       </div>
