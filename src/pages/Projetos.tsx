@@ -1,10 +1,13 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import ImageModal from '@/components/ImageModal';
 
 const Projetos = () => {
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+
   useEffect(() => {
     // Scroll para o topo da página ao acessar
     window.scrollTo(0, 0);
@@ -84,6 +87,18 @@ const Projetos = () => {
     '/lovable-uploads/galeria/768133555652966.jpeg'
   ];
 
+  const handleImageClick = (index: number) => {
+    setSelectedImageIndex(index);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const handleNavigateImage = (index: number) => {
+    setSelectedImageIndex(index);
+  };
+
   return (
     <div className="overflow-x-hidden">
       <Header />
@@ -113,21 +128,41 @@ const Projetos = () => {
             {galleryImages.map((image, index) => (
               <div 
                 key={index}
-                className="group relative overflow-hidden rounded-lg bg-muted animate-on-scroll hover:shadow-xl transition-all duration-300"
+                className="group relative overflow-hidden rounded-lg bg-muted animate-on-scroll hover:shadow-xl transition-all duration-300 cursor-pointer aspect-square"
                 style={{ animationDelay: `${index * 50}ms` }}
+                onClick={() => handleImageClick(index)}
               >
                 <img
                   src={image}
                   alt={`Projeto ${index + 1}`}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                
+                {/* Overlay para indicar que é clicável */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white/90 rounded-full p-2">
+                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Modal para exibir imagem expandida */}
+      {selectedImageIndex !== null && (
+        <ImageModal
+          images={galleryImages}
+          currentIndex={selectedImageIndex}
+          onClose={handleCloseModal}
+          onNavigate={handleNavigateImage}
+        />
+      )}
 
       <Footer />
       <WhatsAppButton />
