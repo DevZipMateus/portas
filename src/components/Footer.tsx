@@ -61,8 +61,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>Goiânia - GO</li>
-              <li className="text-xs sm:text-sm leading-relaxed">Segunda a Sexta, 8h às 18h</li>
-              <li className="text-xs sm:text-sm leading-relaxed">Sábado, 8h às 12h</li>
+              <li className="text-xs sm:text-sm leading-relaxed">Segunda a Quinta, 8h às 18h</li>
+              <li className="text-xs sm:text-sm leading-relaxed">Sexta, 8h às 17h</li>
+              <li className="text-xs sm:text-sm leading-relaxed">Sábado e Domingo fechado</li>
               <li>
                 <a href="https://instagram.com/mportasautomaticas_" className="hover:text-primary transition-colors">
                   @mportasautomaticas_

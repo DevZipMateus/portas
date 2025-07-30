@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -49,7 +48,7 @@ const ContactSection = () => {
     {
       icon: <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />,
       title: "Horário",
-      details: "Segunda a Sexta, 8h às 18h | Sábado, 8h às 12h",
+      details: "Segunda a Quinta, 8h às 18h | Sexta, 8h às 17h | Sábado e Domingo fechado",
       link: null
     }
   ];
