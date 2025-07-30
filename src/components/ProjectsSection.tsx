@@ -1,7 +1,14 @@
 
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import { ProjectCarousel } from './ProjectCarousel';
 
 const ProjectsSection = () => {
+  const handleViewAllProjects = () => {
+    window.location.href = '/projetos';
+  };
+
   return (
     <section id="projects" className="section-padding bg-secondary/10">
       <div className="container mx-auto">
@@ -15,6 +22,23 @@ const ProjectsSection = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto animate-on-scroll">
             Confira alguns dos projetos de portas automáticas e climatização que realizamos
           </p>
+        </div>
+
+        {/* Carrossel de Projetos */}
+        <div className="mb-12 animate-on-scroll">
+          <ProjectCarousel />
+        </div>
+
+        {/* Botão para ver todos os projetos */}
+        <div className="text-center mb-8 animate-on-scroll">
+          <Button 
+            onClick={handleViewAllProjects}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground"
+            size="lg"
+          >
+            Ver Todos os Projetos
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
 
         <div className="mt-12 text-center animate-on-scroll">
