@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -124,11 +123,11 @@ const Projetos = () => {
       {/* Gallery Section */}
       <section className="section-padding bg-background">
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
-          <div className="masonry-grid">
+          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
             {galleryImages.map((image, index) => (
               <div 
                 key={index}
-                className="group relative overflow-hidden rounded-lg bg-muted animate-on-scroll hover:shadow-xl transition-all duration-300 cursor-pointer break-inside-avoid mb-4"
+                className="group relative overflow-hidden rounded-lg bg-muted animate-on-scroll hover:shadow-xl transition-all duration-300 cursor-pointer break-inside-avoid inline-block w-full"
                 style={{ animationDelay: `${index * 50}ms` }}
                 onClick={() => handleImageClick(index)}
               >
@@ -166,34 +165,6 @@ const Projetos = () => {
 
       <Footer />
       <WhatsAppButton />
-
-      <style jsx>{`
-        .masonry-grid {
-          columns: 1;
-          column-gap: 1rem;
-        }
-        
-        @media (min-width: 640px) {
-          .masonry-grid {
-            columns: 2;
-            column-gap: 1.5rem;
-          }
-        }
-        
-        @media (min-width: 768px) {
-          .masonry-grid {
-            columns: 3;
-            column-gap: 1.5rem;
-          }
-        }
-        
-        @media (min-width: 1024px) {
-          .masonry-grid {
-            columns: 4;
-            column-gap: 1.5rem;
-          }
-        }
-      `}</style>
     </div>
   );
 };
