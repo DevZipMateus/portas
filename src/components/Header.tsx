@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Sheet,
   SheetContent,
@@ -15,6 +15,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,22 +32,34 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle automatic scrolling when URL contains hash
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location.hash]);
+
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/5562996920869?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20portas%20automáticas.', '_blank');
   };
 
   const handleNavClick = (href: string) => {
     if (href.startsWith('#')) {
-      // Para links internos da página, navegue para home se não estiver lá
-      if (location.pathname !== '/') {
-        window.location.href = `/${href}`;
-      } else {
-        // Scroll suave para a seção
+      // Update URL with hash and scroll to section
+      navigate(`/${href}`, { replace: true });
+      
+      // Smooth scroll to the section
+      setTimeout(() => {
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }
+      }, 100);
     }
   };
 
