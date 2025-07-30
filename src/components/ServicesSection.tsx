@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -34,10 +33,12 @@ const ServicesSection = () => {
       title: "Vendas",
       description: "Consultoria especializada para escolha da porta automática ideal para seu projeto",
       features: [
-        "Consultoria personalizada",
-        "Orçamento sem compromisso",
-        "Ampla variedade de modelos",
-        "Materiais de alto padrão"
+        "Porta automática de enrolar",
+        "Porta seccionada residencial e industrial", 
+        "Porta rápida industrial",
+        "Niveladora de Doca",
+        "Porta corta fogo",
+        "Climatizador industrial e portátil"
       ],
       highlight: "Destaque"
     },
