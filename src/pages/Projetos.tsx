@@ -6,6 +6,11 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Projetos = () => {
   useEffect(() => {
+    // Scroll para o topo da página ao acessar
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const animatedElements = document.querySelectorAll('.animate-on-scroll');
       animatedElements.forEach((element) => {
