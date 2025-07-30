@@ -66,7 +66,6 @@
   }
 
   .container {
-    @apply px-4 sm:px-6 lg:px-8;
     max-width: 100%;
   }
 
@@ -87,16 +86,22 @@
     @apply text-base sm:text-lg md:text-xl lg:text-2xl;
   }
 
-  /* Responsive containers */
+  /* Responsive containers with proper breakpoints */
+  .container {
+    @apply mx-auto px-4;
+  }
+
   @media (min-width: 640px) {
     .container {
       max-width: 640px;
+      @apply px-6;
     }
   }
 
   @media (min-width: 768px) {
     .container {
       max-width: 768px;
+      @apply px-8;
     }
   }
 
@@ -290,7 +295,7 @@ html {
   left: 100%;
 }
 
-/* Mobile optimizations */
+/* Enhanced Mobile Responsiveness */
 @media (max-width: 640px) {
   .section-padding {
     @apply py-6;
@@ -304,21 +309,73 @@ html {
     @apply w-full text-center py-2 px-4;
   }
 
-  /* Improved touch targets */
-  button, a {
+  /* Better touch targets for mobile */
+  button, a, [role="button"] {
     min-height: 44px;
     min-width: 44px;
   }
 
-  /* Better spacing for mobile */
+  /* Improved text readability on small screens */
+  p {
+    line-height: 1.7;
+  }
+  
+  .text-sm {
+    font-size: 0.9rem;
+  }
+
+  /* Ensure content doesn't get cut off on small screens */
   .container {
-    @apply px-4;
+    @apply px-3;
+  }
+
+  /* Better spacing for mobile */
+  .flex.gap-4 {
+    gap: 0.75rem;
+  }
+  
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
   }
 }
 
-@media (max-width: 768px) {
+/* Medium screen optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
   .service-card:hover {
     transform: translateY(-2px) scale(1.01);
+  }
+
+  /* Better grid layouts for tablets */
+  .grid.md\:grid-cols-2 {
+    gap: 1rem;
+  }
+
+  .grid.md\:grid-cols-3 {
+    gap: 1.5rem;
+  }
+}
+
+/* Large screen enhancements */
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  /* Enhanced hover effects for desktop */
+  .service-card:hover {
+    transform: translateY(-6px) scale(1.03);
+  }
+}
+
+/* Ultra-wide screen support */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px;
   }
 }
 
@@ -329,6 +386,10 @@ html {
   .product-card,
   .animate-slide-up {
     transition: none;
+    animation: none;
+  }
+
+  .whatsapp-btn {
     animation: none;
   }
 }
@@ -374,24 +435,32 @@ html {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Improved text readability */
-@media (max-width: 640px) {
-  p {
-    line-height: 1.7;
-  }
-  
-  .text-sm {
-    font-size: 0.9rem;
-  }
+/* Text wrapping and overflow handling */
+.break-words {
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
-/* Better button spacing on mobile */
-@media (max-width: 640px) {
-  .flex.gap-4 {
-    gap: 0.75rem;
-  }
-  
-  .space-y-4 > * + * {
-    margin-top: 0.75rem;
-  }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Flex utilities for better layouts */
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+/* Better spacing utilities */
+.space-y-tight > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-x-tight > * + * {
+  margin-left: 0.5rem;
 }

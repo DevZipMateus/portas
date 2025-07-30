@@ -71,20 +71,20 @@ const Header = () => {
           : 'py-3 sm:py-4 bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 md:px-8">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-full">
         <div className="flex items-center justify-between">
-          <Link to="/" className="relative z-20">
+          <Link to="/" className="relative z-20 flex-shrink-0">
             <div className="flex items-center">
               <img 
                 src="/lovable-uploads/bec97fe8-4b86-4d49-86bf-fad30c701380.png" 
                 alt="Mportas Automáticas Logo" 
-                className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 mr-2 sm:mr-3"
+                className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 mr-2 sm:mr-3 flex-shrink-0"
               />
-              <div className="flex flex-col">
-                <h1 className="text-base sm:text-lg md:text-xl font-display font-bold text-foreground leading-tight">
+              <div className="flex flex-col min-w-0">
+                <h1 className="text-sm sm:text-base md:text-lg lg:text-xl font-display font-bold text-foreground leading-tight truncate">
                   <span className="text-primary">Mportas</span> Automáticas
                 </h1>
-                <span className="text-xs sm:text-sm text-foreground/70 font-medium hidden sm:block">
+                <span className="text-xs sm:text-sm text-foreground/70 font-medium hidden sm:block truncate">
                   e Climatizadores LTDA
                 </span>
               </div>
@@ -97,21 +97,21 @@ const Header = () => {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center flex-shrink-0">
             <Button 
               onClick={handleWhatsAppClick}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm lg:text-base px-4 lg:px-6"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm lg:text-base px-3 sm:px-4 lg:px-6 whitespace-nowrap"
             >
               Solicitar Orçamento
             </Button>
           </div>
 
           {/* Mobile Menu */}
-          <div className="md:hidden">
+          <div className="md:hidden flex-shrink-0">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="h-9 w-9 sm:h-10 sm:w-10 text-foreground">
-                  <Menu size={20} className="sm:w-6 sm:h-6" />
+                  <Menu size={18} className="sm:w-5 sm:h-5" />
                   <span className="sr-only">Abrir menu</span>
                 </Button>
               </SheetTrigger>
@@ -121,7 +121,7 @@ const Header = () => {
                   <SheetClose asChild>
                     <Button 
                       onClick={handleWhatsAppClick}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-4 text-sm sm:text-base"
+                      className="w-full max-w-xs bg-primary hover:bg-primary/90 text-primary-foreground mt-4 text-sm sm:text-base"
                     >
                       Solicitar Orçamento
                     </Button>
@@ -165,10 +165,10 @@ const NavLinks = ({ mobile, onNavClick }: NavLinksProps) => {
             <button
               key={link.name}
               onClick={() => handleClick(link)}
-              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md cursor-pointer
+              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md cursor-pointer truncate
                 ${mobile 
-                  ? 'text-lg sm:text-xl text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3' 
-                  : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50'
+                  ? 'text-base sm:text-lg text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3 max-w-xs' 
+                  : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50 whitespace-nowrap'
                 }`}
             >
               {link.name}
@@ -179,10 +179,10 @@ const NavLinks = ({ mobile, onNavClick }: NavLinksProps) => {
             <Link
               key={link.name}
               to={link.href}
-              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md
+              className={`font-medium transition-all duration-300 px-3 py-2 rounded-md truncate
                 ${mobile 
-                  ? 'text-lg sm:text-xl text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3' 
-                  : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50'
+                  ? 'text-base sm:text-lg text-foreground hover:text-primary mb-2 w-full text-center py-2 sm:py-3 max-w-xs' 
+                  : 'text-sm lg:text-base text-foreground/80 hover:text-primary hover:bg-secondary/50 whitespace-nowrap'
                 }`}
             >
               {link.name}
