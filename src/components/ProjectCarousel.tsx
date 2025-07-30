@@ -34,6 +34,9 @@ export function ProjectCarousel() {
 
   return (
     <Carousel
+      opts={{
+        loop: true,
+      }}
       plugins={[plugin.current]}
       className="w-full max-w-4xl mx-auto"
       onMouseEnter={plugin.current.stop}
