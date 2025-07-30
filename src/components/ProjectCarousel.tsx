@@ -18,8 +18,9 @@ export function ProjectCarousel() {
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
 
-  // Selecionando 10 imagens da galeria para o carrossel
+  // Selecionando 10 imagens da galeria para o carrossel - nova imagem como primeira
   const images = [
+    { url: '/lovable-uploads/e62dbc24-e16b-43ab-84c8-bd9e1489b257.png', alt: 'Projeto Principal de Porta Automática' },
     { url: '/lovable-uploads/galeria/1083883429935146.jpeg', alt: 'Projeto de Porta Automática 1' },
     { url: '/lovable-uploads/galeria/1102318838552346.jpeg', alt: 'Projeto de Porta Automática 2' },
     { url: '/lovable-uploads/galeria/1150543456894754.jpeg', alt: 'Projeto de Porta Automática 3' },
@@ -28,8 +29,7 @@ export function ProjectCarousel() {
     { url: '/lovable-uploads/galeria/1276507387385563.jpeg', alt: 'Projeto de Porta Automática 6' },
     { url: '/lovable-uploads/galeria/1315471966614294.jpeg', alt: 'Projeto de Porta Automática 7' },
     { url: '/lovable-uploads/galeria/1382419246192264.jpeg', alt: 'Projeto de Porta Automática 8' },
-    { url: '/lovable-uploads/galeria/1455767175699446.jpeg', alt: 'Projeto de Porta Automática 9' },
-    { url: '/lovable-uploads/galeria/1502827771131963.jpeg', alt: 'Projeto de Porta Automática 10' }
+    { url: '/lovable-uploads/galeria/1455767175699446.jpeg', alt: 'Projeto de Porta Automática 9' }
   ];
 
   return (

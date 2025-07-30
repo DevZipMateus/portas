@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -33,8 +34,9 @@ const Projetos = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lista de todas as imagens da pasta galeria
+  // Lista de todas as imagens da pasta galeria - nova imagem como primeira
   const galleryImages = [
+    '/lovable-uploads/e62dbc24-e16b-43ab-84c8-bd9e1489b257.png',
     '/lovable-uploads/galeria/1083883429935146.jpeg',
     '/lovable-uploads/galeria/1102318838552346.jpeg',
     '/lovable-uploads/galeria/1150543456894754.jpeg',
