@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { ChevronUp } from 'lucide-react';
 
@@ -9,6 +8,14 @@ const Footer = () => {
       behavior: 'smooth',
     });
   };
+
+  const phoneNumbers = [
+    { number: '(62) 3242-5930', whatsapp: false },
+    { number: '(62) 99692-0869', whatsapp: true },
+    { number: '(62) 99854-0770', whatsapp: true },
+    { number: '(62) 99610-9627', whatsapp: true },
+    { number: '(62) 99650-9475', whatsapp: true }
+  ];
 
   return (
     <footer className="bg-secondary-foreground text-white py-8 sm:py-12 md:py-16">
@@ -50,11 +57,27 @@ const Footer = () => {
           <div className="text-center sm:text-left">
             <h4 className="text-sm sm:text-base md:text-lg font-semibold mb-3 sm:mb-4">Contato</h4>
             <ul className="space-y-2 sm:space-y-3 text-white/80 text-sm sm:text-base">
-              <li>
-                <a href="https://wa.me/5562996920869" className="hover:text-primary transition-colors">
-                  (62) 99692-0869
-                </a>
-              </li>
+              {phoneNumbers.map((phone, index) => (
+                <li key={index}>
+                  {phone.whatsapp ? (
+                    <a 
+                      href={`https://wa.me/55${phone.number.replace(/\D/g, '')}`} 
+                      className="hover:text-primary transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {phone.number}
+                    </a>
+                  ) : (
+                    <a 
+                      href={`tel:+55${phone.number.replace(/\D/g, '')}`} 
+                      className="hover:text-primary transition-colors"
+                    >
+                      {phone.number}
+                    </a>
+                  )}
+                </li>
+              ))}
               <li>
                 <a href="mailto:vendas@mportasautomaticas.com.br" className="hover:text-primary transition-colors break-all">
                   vendas@mportasautomaticas.com.br
